@@ -208,6 +208,12 @@ function cssToRNStyle (css, styleset, { emSize, ptSize, ignoredStyles, allowedSt
                 if (key === 'fontSize') {
                     return mapAbsoluteFontSize(key, value);
                 }
+
+                if (key === 'textAlign') {
+                    if (!['auto', 'left', 'right', 'center', 'justify'].includes(value)) {
+                        return [key, 'left'];
+                    }
+                }
             }
             return [key, value];
         })
